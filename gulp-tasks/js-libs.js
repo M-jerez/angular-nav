@@ -14,6 +14,8 @@ module.exports = function (gulp, plugins,conf) {
             .pipe(plugins.concat("libs.js"))
             .pipe(plugins.uglify())
             .pipe(plugins.sourcemaps.write(conf.maps))
+            .pipe(gulp.dest(conf.output))
+            .pipe(plugins.gzip())
             .pipe(gulp.dest(conf.output));
     };
 };

@@ -2,10 +2,14 @@
 var config = {
     //typescript compilation
     ts:{
-        input: ["./src/app/**/*.ts", //path to typescript files
-            "./tools/typings/**/*.ts"],//path to references .d.ts files
+        input: [
+            "./src/app/**/*.ts", //path to typescript files
+            "./tools/typings/**/*.ts"//path to references .d.ts files
+        ],
         output: "./public/compiled/js/",
-        maps:"../maps"
+        outputName:"app.js",
+        maps:"../maps",
+        debugOutput:true
     },
 
     //automate app.d.ts generation
@@ -19,13 +23,20 @@ var config = {
     less:{
         input:["./src/styles/style.less"],//Entry point to compile all less files, import files using less @import functionality
         output:"./public/compiled/css/",
+        outputName:"style.css",
         maps:"../maps"
     },
 
     //concatenates angular templates $templateCache
     ngViews:{
         input:["./src/app/views/**/*.html"],
-        output:"./public/compiled/js/"
+        output:"./public/compiled/js/",
+        outputName:"views.js"
+    },
+
+    //clean files and directories
+    clean:{
+        input:"./public/compiled/"
     }
 
 };

@@ -6,7 +6,7 @@ module demoApp {
 
         customerId: number;
 
-        static $inject = ['$routeParams'];
+        //static $inject = ['$routeParams'];
         constructor($routeParams) {
             this.customerId = $routeParams.customerId;
         }
