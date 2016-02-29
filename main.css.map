@@ -1,1 +1,0 @@
-{"version":3,"sources":["main.less"],"names":[],"mappings":"AAAA,KACE,iBAAA,KADF,QAGI,MAAA","file":"main.css","sourcesContent":["body{\r\n  background-color: #eee;\r\n  h1{\r\n    color: #555;\r\n  }\r\n}"],"sourceRoot":"/source/"}

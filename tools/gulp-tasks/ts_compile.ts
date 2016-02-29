@@ -1,16 +1,18 @@
 import {join} from 'path';
 import {PATH} from '../../Config';
+import * as ts from 'gulp-typescript'
 
 
+let tsProject =  ts.createProject('tsconfig.json', {
+    typescript: require('typescript')
+});
 
 export = function ts_compile(gulp, plugins) {
     return function () {
-        let tsProject =  plugins.typescript.createProject('tsconfig.json', {
-            typescript: require('typescript')
-        });;
+
         let src = [
             'typings/browser.d.ts',
-            'tools/manual_typings/**/*.d.ts',
+            'tools/manual-typings/**/*.d.ts',
             join(PATH.build, '**/*.ts')
         ];
         let result = gulp.src(src)
@@ -20,12 +22,7 @@ export = function ts_compile(gulp, plugins) {
 
         return result.js
             .pipe(plugins.sourcemaps.write("maps"))
-            .pipe(gulp.dest("."));
+            .pipe(gulp.dest(PATH.build));
     };
 };
 
-
-
-export function tsProjectFn(plugins) {
-    return
-}
