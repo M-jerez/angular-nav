@@ -22,7 +22,7 @@
     "orchestrator": "github:DefinitelyTyped/DefinitelyTyped/orchestrator/orchestrator.d.ts#5c3e47967affa3c4128a3875d1664ba206ae1b0f",
     "parse-glob": "github:DefinitelyTyped/DefinitelyTyped/parse-glob/parse-glob.d.ts#1ae2ddf27c6e9b98ad7e7fa496788f1aadf37933",
     "run-sequence": "github:DefinitelyTyped/DefinitelyTyped/run-sequence/run-sequence.d.ts#052725d74978d6b8d7c4ff537b5a3b21ee755a49",
-    "systemjs": "github:DefinitelyTyped/DefinitelyTyped/systemjs/systemjs.d.ts#5c3e47967affa3c4128a3875d1664ba206ae1b0f",
+    "systemjs": "github:DefinitelyTyped/DefinitelyTyped/systemjs/systemjs.d.ts#83af898254689400de8fb6495c34119ae57ec3fe",
     "through2": "github:DefinitelyTyped/DefinitelyTyped/through2/through2.d.ts#48f20e97bfaf70fc1a9537b38aed98e9749be0ae",
     "vinyl": "github:DefinitelyTyped/DefinitelyTyped/vinyl/vinyl.d.ts#4ead81cc68ab1a2cd824de4394e1bda72b1b9f92",
     "vinyl-source-stream": "github:DefinitelyTyped/DefinitelyTyped/vinyl-source-stream/vinyl-source-stream.d.ts#ffceea9dd124d277c4597c7bd12930666ec074c5",

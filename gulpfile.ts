@@ -21,7 +21,7 @@ gulp.task("build",done=>{
 });
 
 
-function task(name:string){
+function task(name){
     var task = path.join(PATH.tasks,name);
     gutil.log( gutil.colors.green("Loading Task:" ,name));
     return require(path.resolve(task))(gulp,loadPlugins());

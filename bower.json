@@ -1,10 +1,10 @@
 {
-  "name": "ngconf-typescript",
+  "name": "angular2-starter",
   "version": "0.1.0",
   "description": "AngularJS and TypeScript",
-  "homepage": "https://github.com/andrewconnell/ngconf-typescript",
+  "homepage": "https://github.com/M-jerez/angular2-seed",
   "authors": [
-    "Dan Wahlin <dwahlin@wahlinconsulting.com>"
+    "Ma Jerez marlon.jerez@radical.ie"
   ],
   "license": "MIT",
   "ignore": [
@@ -12,17 +12,10 @@
     "node_modules",
     "bower_components",
     "bower_packages",
-    "test",
-    "tests"
+    "dist",
+    "tools"
   ],
   "dependencies": {
-    "bootstrap": "3.2.0",
-    "angular": "1.4.0",
-    "angular-animate": "1.4.0",
-    "angular-route": "1.4.0",
-    "angular-bootstrap": "0.10.0"
-  },
-  "resolutions": {
-    "angular": "1.4.0"
+    "Materialize": "materialize#^0.97.5"
   }
 }

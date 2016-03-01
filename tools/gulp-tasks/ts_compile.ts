@@ -1,7 +1,8 @@
 import {join} from 'path';
 import {PATH} from '../../Config';
-import * as ts from 'gulp-typescript'
+import * as ts from 'gulp-typescript';
 
+var webpack = require('webpack-stream');
 
 let tsProject =  ts.createProject('tsconfig.json', {
     typescript: require('typescript')
@@ -13,7 +14,7 @@ export = function ts_compile(gulp, plugins) {
         let src = [
             'typings/browser.d.ts',
             'tools/manual-typings/**/*.d.ts',
-            join(PATH.build, '**/*.ts')
+            join(PATH.src, '**/*.ts')
         ];
         let result = gulp.src(src)
             .pipe(plugins.plumber())
