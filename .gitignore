@@ -18,13 +18,10 @@ lib-cov
 *.out
 *.pid
 *.gz
-
 pids
 logs
 results
-
 node_modules
-
 npm-debug.log
 
 
@@ -49,3 +46,5 @@ config/local.js
 # generated files
 ########################
 public/comp
+dist
+bower_components

@@ -2,7 +2,6 @@ import {join} from 'path';
 import {PATH} from '../../Config';
 import * as ts from 'gulp-typescript';
 
-var webpack = require('webpack-stream');
 
 let tsProject =  ts.createProject('tsconfig.json', {
     typescript: require('typescript')

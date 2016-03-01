@@ -1,1 +1,0 @@
-{"version":3,"sources":["app.ts"],"names":[],"mappings":";AAAA,0BAAwB,2BAA2B,CAAC,CAAA;AACpD,8BAAyB,sCAAsC,CAAC,CAAA;AAGhE,mBAAS,CAAC,wBAAU,EAAE,EAAE,CAAC,CAAC","file":"app.js","sourcesContent":["import {bootstrap} from 'angular2/platform/browser';\nimport {TechSlider} from \"./components/tech-slider/tech-slider\";\n\n\nbootstrap(TechSlider, []);\n"],"sourceRoot":"/source/"}
