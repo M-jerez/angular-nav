@@ -1,5 +1,5 @@
 import {join} from 'path';
-import {PATH} from '../../Config';
+import {TS} from '../../Config';
 import * as ts from 'gulp-typescript';
 
 
@@ -10,11 +10,7 @@ let tsProject =  ts.createProject('tsconfig.json', {
 export = function ts_compile(gulp, plugins) {
     return function () {
 
-        let src = [
-            'typings/browser.d.ts',
-            'tools/manual-typings/**/*.d.ts',
-            join(PATH.src, '**/*.ts')
-        ];
+        let src = TS.src;
         let result = gulp.src(src)
             .pipe(plugins.plumber())
             .pipe(plugins.sourcemaps.init())
@@ -22,7 +18,7 @@ export = function ts_compile(gulp, plugins) {
 
         return result.js
             .pipe(plugins.sourcemaps.write("maps"))
-            .pipe(gulp.dest(PATH.build));
+            .pipe(gulp.dest(TS.dest));
     };
 };
 
