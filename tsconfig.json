@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "module": "commonjs",
     "declaration": false,
     "noImplicitAny": false,
@@ -13,7 +13,6 @@
   },
   "exclude": [
     "node_modules",
-    "tools/gulp-tasks/**",
     "typings/browser.d.ts",
     "typings/browser/**"
   ],

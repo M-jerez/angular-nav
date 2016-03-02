@@ -23,11 +23,20 @@ gulp.task("build",done=>{
 
 
 gulp.task("watch",done=>{
+
+
+
     gutil.log( gutil.colors.green("Waiting for file changes"));
     gulp.watch(path.join(PATH.src,"**"),['copy']);
     gulp.watch(path.join(PATH.src,"**/*.ts"),['ts_compile']);
-    console.log(path.join(PATH.src,"**/*."+path.extname(CSS.src)));
     gulp.watch(path.join(PATH.src,"**/*"+path.extname(CSS.src)),['css']);
+
+    gutil.log( gutil.colors.blue("Starting liveReload server"));
+    var livereload = require('livereload');
+    var server = livereload.createServer();
+
+    console.log(path.join(__dirname ,PATH.build))
+    server.watch(path.join(__dirname ,PATH.build));
 });
 
 gulp.task("clean",done=>{

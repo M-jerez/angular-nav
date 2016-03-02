@@ -24,5 +24,3 @@ export const TS = {
     ],
     dest : PATH.build
 };
-
-console.log(TS);

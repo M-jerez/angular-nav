@@ -1,54 +1,47 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>MyApp</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="utf-8">
+    <title>MyApp</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
 
-
-  <!-- Service worker support is disabled by default.
-       Install the worker script and uncomment to enable.
-       Only enable service workers in production.
-  <script type="text/javascript">
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/worker.js').catch(function(err) {
-        console.log('Error installing service worker: ', err);
-      });
-    }
-  </script>
-  -->
+    <!-- Service worker support is disabled by default.
+         Install the worker script and uncomment to enable.
+         Only enable service workers in production.
+    <script type="text/javascript">
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/worker.js').catch(function(err) {
+          console.log('Error installing service worker: ', err);
+        });
+      }
+    </script>
+    -->
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <tech-slider>Loading...</tech-slider>
+<tech-slider>Loading...</tech-slider>
 
 
-  <script src="../bower_components/jquery/dist/jquery.js"></script>
-  <script src="../bower_components/Materialize/dist/js/materialize.js"></script>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/Materialize/dist/js/materialize.js"></script>
 
 
-  <script src="../node_modules/es6-shim/es6-shim.js"></script>
-  <script src="../node_modules/systemjs/dist/system-polyfills.src.js"></script>
-  <script src="../node_modules/reflect-metadata/Reflect.js"></script>
-  <script src="../node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+<script src="../node_modules/es6-shim/es6-shim.js"></script>
+<script src="../node_modules/systemjs/dist/system-polyfills.src.js"></script>
+<script src="../node_modules/reflect-metadata/Reflect.js"></script>
+<script src="../node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
 
-  <script src="../node_modules/systemjs/dist/system.src.js"></script>
-  <script src="../node_modules/rxjs/bundles/Rx.js"></script>
-
-
+<script src="../node_modules/systemjs/dist/system.src.js"></script>
+<script src="../node_modules/rxjs/bundles/Rx.js"></script>
 
 
-
-  <script>
+<script>
     System.config({
-      packages: {
-        app: {
-          format: 'register',
-          defaultExtension: 'js'
-        }
-      }
+        "defaultJSExtensions": true,
+        "paths": {"main": "/main", "angular2/*": "../node_modules/angular2/*", "rxjs/*": "../node_modules/rxjs/*"}
     });
     System.import('app.js').then(null, console.error.bind(console));
-  </script>
+</script>
 </body>
 </html>
