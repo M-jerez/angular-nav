@@ -3,56 +3,23 @@ import * as runInSequence from 'run-sequence';
 import * as loadPlugins from 'gulp-load-plugins';
 import * as path from "path";
 import * as fs from "fs";
-import * as gutil from "gulp-util";
-import * as del from 'del';
+import * as gutil from 'gulp-util';
 import {PATH,CSS} from './Config';
 
-
 //require
+autoLoadTasks(PATH.tasks);
 
-autoLoadTasks();
 
-gulp.task("build",done=>{
-    runInSequence(
-        'clean',
-        'copy',
-        ['css','ts_compile'],
-        "watch"
-    )
+
+gulp.task('default', ["build", "watch"]);
+gulp.task("Build", done=> {
+	runInSequence(
+		'clean',
+		'copy',
+		['css', 'ts_compile', "inject_dev"]
+	)
 });
 
-
-gulp.task("watch",done=>{
-
-
-
-    gutil.log( gutil.colors.green("Waiting for file changes"));
-    gulp.watch(path.join(PATH.src,"**"),['copy']);
-    gulp.watch(path.join(PATH.src,"**/*.ts"),['ts_compile']);
-    gulp.watch(path.join(PATH.src,"**/*"+path.extname(CSS.src)),['css']);
-
-    gutil.log( gutil.colors.blue("Starting liveReload server"));
-    var livereload = require('livereload');
-    var server = livereload.createServer();
-
-    console.log(path.join(__dirname ,PATH.build))
-    server.watch(path.join(__dirname ,PATH.build));
-});
-
-gulp.task("clean",done=>{
-    del(PATH.build).then((paths) => {
-        gutil.log('Deleting: ', paths.join(' '));
-        done();
-    });
-});
-
-
-
-function task(name){
-    var task = path.join(PATH.tasks,name);
-    gutil.log( gutil.colors.green("Executing Task:" ,name));
-    return require(path.resolve(task))(gulp,loadPlugins());
-}
 
 /**
  * Automatically load all tasks on the tools/gulp-tasks folder with ts extension.
@@ -62,15 +29,31 @@ function task(name){
  * ie: gulp.task("build",["autoaloaded_name_1","autoloaded_name_2"....]
  *
  */
-function autoLoadTasks(){
-    var files = fs.readdirSync(PATH.tasks);
-    for (var i in files){
-        let name = files[i];
-        let file = path.resolve(path.join( PATH.tasks ,name ));
-        if (!fs.statSync(file).isDirectory() && path.extname(name) == ".ts"){
-            // Not directory and only typescript files
-            let task_name = path.basename(name, ".ts");
-            gulp.task(task_name,()=>task(task_name)());
-        }
-    }
+function autoLoadTasks(task_dir) {
+	var files = fs.readdirSync(task_dir)
+	for (var i in files) {
+		let name = files[i];
+		let file = path.resolve(path.join(task_dir, name));
+		if (!fs.statSync(file).isDirectory() && path.extname(name) == ".ts") {
+			// Not directory and only typescript files
+			let task_name = path.basename(name, ".ts");
+			requiretask(task_dir, task_name);
+		}
+	}
 }
+
+
+/**
+ * Load a task using loadPlugins
+ * @param name
+ * @returns {any}
+ */
+function requiretask(task_dir, name) {
+	var task = path.join(task_dir, name);
+	gutil.log(gutil.colors.green("Require Task:", name));
+	return require(path.resolve(task))(gulp, loadPlugins());
+}
+
+
+
+

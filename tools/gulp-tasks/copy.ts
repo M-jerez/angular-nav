@@ -3,14 +3,27 @@
  */
 import {join} from 'path';
 import * as gutil from 'gulp-util';
-import {PATH} from '../../Config';
+import {COPY} from '../../Config';
+import {Gulp} from 'gulp';
+import {gulpTask} from "../utils";
 
-export = function copy_dev(gulp, plugins) {
-    return function () {
-        gutil.log("Copying ",PATH.src+'/**'," Files to:",PATH.build+"/**");
-        return gulp.src([join(PATH.src,'**')])
-            .pipe(plugins.newer(PATH.build))
-            //.pipe(plugins.filelog())
-            .pipe(gulp.dest(PATH.build));
-    };
+
+
+class copyTask implements gulpTask{
+
+	name:string="copy";
+
+	register(gulp:Gulp, plugins) {
+		gulp.task(this.name,()=>{
+			return gulp.src(COPY.src)
+				.pipe(plugins.newer(COPY.dest))
+				//.pipe(plugins.filelog())
+				.pipe(gulp.dest(COPY.dest));
+		});
+	}
+
+}
+
+export = function clean(gulp:Gulp, plugins) {
+	return new copyTask().register(gulp, plugins);
 }
