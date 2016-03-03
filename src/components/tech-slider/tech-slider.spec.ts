@@ -13,6 +13,7 @@ import {provide} from 'angular2/core.d';
 import {TechSlider} from './tech-slider';
 
 
+
 describe('TechSlider Component', () => {
 
   beforeEachProviders((): any[] => []);

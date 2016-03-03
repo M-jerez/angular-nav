@@ -15,19 +15,41 @@ class watchTask implements gulpTask{
 		gulp.task("watch",(done)=>{
 
 			//watch settings
-			gulp.watch(path.join(PATH.src,"**"),['copy']);
-			gulp.watch(path.join(PATH.src,"**/*.ts"),['ts_compile']);
-			gulp.watch(path.join(PATH.src,"**/*"+path.extname(CSS.src)),['css']);
+			var css = path.join(PATH.src,"**/*"+path.extname(CSS.src));
+			var ts = path.join(PATH.src,"**/*.ts");
+			var index =  INJECT.htmlSrc;
+			var others = [path.join(PATH.src,"**"),`!${css}`,`!${ts}`,`${index}`];
+			var all = path.join(PATH.src,"**");
+			gulp.watch(index,['inject']);
+			gulp.watch(ts,['ts_compile',"copy"]);
+			gulp.watch(css,['css',"copy"]);
+			gulp.watch(others,["copy"]);
 
-			//open browser
-			gutil.log( gutil.colors.blue("Starting liveReload server"));
+
+			//this is a hack couse liverelad wasnt working.
+			gulp.watch(all,()=>{
+				return gulp.src("").pipe(plugins.livereload());
+			});
+
+
+
+
 
 			//live reload
-			var livereload = require('livereload');
-			var server = livereload.createServer();
-			open(path.join(PATH.baseUrl,INJECT.dest));
-			gutil.log( gutil.colors.green("Waiting for file changes"));
-			server.watch(path.join(__dirname ,PATH.build));
+			plugins.livereload.listen();
+			//var livereload = require('livereload');
+			//var server = livereload.createServer();
+			//console.log(__dirname+"/"+PATH.src);
+			//server.watch(__dirname+"/"+PATH.src);
+			gutil.log( gutil.colors.green("Starting liveReload server"));
+			gutil.log( gutil.colors.green("Waiting for file changes ..."));
+
+
+			//open browser
+			var url = path.join(PATH.baseUrl,INJECT.dest);
+			gutil.log( gutil.colors.green("Open project ", url));
+			open(url);
+
 		})
 	}
 

@@ -50,7 +50,7 @@ export interface InjectGroup {
 	/**
 	 * The Name or identifier od the inject group
 	 */
-	name?:string;
+	name:string;
 }
 
 export interface HtmlInject {

@@ -21,7 +21,8 @@ gulp.task("Build", done=> {
 	runInSequence(
 		'clean',
 		'copy',
-		['css', 'ts_compile', "inject"],
+		['css', 'ts_compile'],
+		"inject",
 		done
 	)
 });

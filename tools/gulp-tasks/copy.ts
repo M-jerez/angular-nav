@@ -14,10 +14,10 @@ class copyTask implements gulpTask{
 	name:string="copy";
 
 	register(gulp:Gulp, plugins) {
+
 		gulp.task(this.name,()=>{
 			return gulp.src(COPY.src)
 				.pipe(plugins.newer(COPY.dest))
-				//.pipe(plugins.filelog())
 				.pipe(gulp.dest(COPY.dest));
 		});
 	}

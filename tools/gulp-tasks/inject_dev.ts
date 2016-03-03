@@ -11,6 +11,7 @@ class injectTask implements gulpTask {
 
 	name:string = "inject";
 
+	files={};
 
 	register(gulp:Gulp, plugins) {
 		gulp.task(this.name, ()=> {
@@ -25,7 +26,12 @@ class injectTask implements gulpTask {
 			// process al injects
 			for (var i = 0; i < groups.length; i++) {
 				var group = groups[i];
-				var files = this.copy(group);
+
+				//stores the result of copy on the files object so copy is not performed on watch task
+				if(typeof this.files[group.name] == "undefined"){
+					this.files[group.name] = this.copy(group);
+				}
+				var files = this.files[group.name];
 				stream.pipe(plugins.inject(gulp.src(files, {read: false}), {
 					name: group.injectName,
 					transform: this.addCompilationTime
@@ -68,6 +74,7 @@ class injectTask implements gulpTask {
 	 * @returns {string[]} an array with the file names to use with inject
 	 */
 	private copy(injGroup:InjectGroup):string[] {
+		gutil.log("Copying files for inject");
 		var files = injGroup.files;
 		var dest = injGroup.copy;
 		var flatten = (injGroup.flatten);//return false instead undefiled if flatten is undefined
