@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as gutil from 'gulp-util';
-import {CSS,PATH} from '../../Config';
+import {CSS,PATH,INJECT} from '../../Config';
 import {Gulp} from 'gulp';
 import {gulpTask, css_preprocessor} from '../utils';
 
@@ -13,21 +13,25 @@ class watchTask implements gulpTask{
 
 	register(gulp:Gulp, plugins) {
 		gulp.task("watch",(done)=>{
-			gutil.log( gutil.colors.green("Waiting for file changes"));
+
+			//watch settings
 			gulp.watch(path.join(PATH.src,"**"),['copy']);
 			gulp.watch(path.join(PATH.src,"**/*.ts"),['ts_compile']);
 			gulp.watch(path.join(PATH.src,"**/*"+path.extname(CSS.src)),['css']);
+
+			//open browser
 			gutil.log( gutil.colors.blue("Starting liveReload server"));
+
+			//live reload
 			var livereload = require('livereload');
 			var server = livereload.createServer();
+			open(path.join(PATH.baseUrl,INJECT.dest));
+			gutil.log( gutil.colors.green("Waiting for file changes"));
 			server.watch(path.join(__dirname ,PATH.build));
 		})
 	}
 
 }
-
-
-function openFileUrl(www_path,project_path,in)
 
 
 export = function clean(gulp:Gulp, plugins) {

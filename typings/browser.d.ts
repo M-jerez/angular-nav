@@ -4,6 +4,7 @@
 /// <reference path="browser/ambient/chokidar/chokidar.d.ts" />
 /// <reference path="browser/ambient/del/del.d.ts" />
 /// <reference path="browser/ambient/es6-shim/es6-shim.d.ts" />
+/// <reference path="browser/ambient/fs-extra/fs-extra.d.ts" />
 /// <reference path="browser/ambient/glob/glob.d.ts" />
 /// <reference path="browser/ambient/gulp-load-plugins/gulp-load-plugins.d.ts" />
 /// <reference path="browser/ambient/gulp-sourcemaps/gulp-sourcemaps.d.ts" />

@@ -23,3 +23,51 @@ export interface gulpTask{
      */
 	register(gulp:Gulp,plugins);
 }
+
+export interface InjectGroup {
+
+	/**
+	 * Destination path of the copied files
+	 */
+	copy?:string;
+	/**
+	 * Set to true if want faltten file path when copied.
+	 * (Only used on copied files)
+	 */
+	flatten?:boolean;
+
+	/**
+	 * List of files to inject
+	 */
+	files:string[];
+
+	/**
+	 * Name of the inject annotation
+	 */
+	injectName:string;
+
+
+	/**
+	 * The Name or identifier od the inject group
+	 */
+	name?:string;
+}
+
+export interface HtmlInject {
+	/**
+	 * The src Html with the inject annotations
+	 */
+	htmlSrc:string;
+
+	/**
+	 * The dstination directory
+	 */
+	dest:string;
+
+
+	/**
+	 * Groups of files to inject
+	 */
+	injects:InjectGroup[];
+}
+
