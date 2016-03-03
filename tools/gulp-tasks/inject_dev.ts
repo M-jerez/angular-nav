@@ -5,7 +5,7 @@ import {GulpPlugin,Gulp} from 'gulp';
 import {gulpTask, css_preprocessor,InjectGroup} from "../utils";
 import * as fsx from 'fs-extra';
 var compilaionID:number = null;
-
+var Inject:any=null;
 
 class injectTask implements gulpTask {
 
@@ -14,11 +14,15 @@ class injectTask implements gulpTask {
 
 	register(gulp:Gulp, plugins) {
 		gulp.task(this.name, ()=> {
+			//required values for the transform function
 			compilaionID = Date.now();
+			Inject = plugins.inject;
+
+			//read config file & init gulp stream
 			var groups:InjectGroup[] = INJECT.injects;
 			var stream = gulp.src(INJECT.htmlSrc).pipe(plugins.plumber());
 
-
+			// process al injects
 			for (var i = 0; i < groups.length; i++) {
 				var group = groups[i];
 				var files = this.copy(group);
@@ -51,8 +55,8 @@ class injectTask implements gulpTask {
 		}else if(ext==".js"){
 			return `<script src="${rel_dest}?${compilaionID}"></script>`
 		}else{
-			gutil.log("gulp-inject:",gutil.colors.red(`extension '${ext}' not supported, ${rel_root}`));
-			return "";
+			// Use the default transform as fallback:
+			return Inject.transform.apply(Inject.transform, arguments);
 		}
 	}
 

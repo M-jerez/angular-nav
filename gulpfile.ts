@@ -11,12 +11,18 @@ autoLoadTasks(PATH.tasks);
 
 
 
-gulp.task('default', ["build", "watch"]);
+gulp.task('default', done=>{
+	runInSequence(
+		'Build',
+		'watch'
+	)
+});
 gulp.task("Build", done=> {
 	runInSequence(
 		'clean',
 		'copy',
-		['css', 'ts_compile', "inject"]
+		['css', 'ts_compile', "inject"],
+		done
 	)
 });
 
