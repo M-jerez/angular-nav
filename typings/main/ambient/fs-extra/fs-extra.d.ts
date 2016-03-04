@@ -1,4 +1,4 @@
-// Compiled using typings@0.6.8
+// Compiled using typings@0.6.9
 // Source: https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/72d95b38f008fed506c6cbf3af8a693bd7c3363a/fs-extra/fs-extra.d.ts
 // Type definitions for fs-extra
 // Project: https://github.com/jprichardson/node-fs-extra

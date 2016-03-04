@@ -1,4 +1,4 @@
-// Compiled using typings@0.6.8
+// Compiled using typings@0.6.9
 // Source: https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/83af898254689400de8fb6495c34119ae57ec3fe/systemjs/systemjs.d.ts
 // Type definitions for System.js 0.18.4
 // Project: https://github.com/systemjs/systemjs

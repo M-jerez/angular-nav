@@ -29,7 +29,8 @@ export const TS = {
         `${PATH.src}/**/*.ts`
     ],
     dest: PATH.build,
-    min:`${PATH.build}/assets/js/app.min.js`
+    min:`${PATH.build}/assets/js/app.min.js`,
+	main:`${PATH.src}/app.ts`
 };
 
 export const SYSTEM_JS = {
@@ -61,8 +62,8 @@ export const INJECT = {
             name: "CSS",
             copy: null,
             injectName: "inject-css-head",
-            min: `${CSS.dest}/main.min.css`,
-            files: [`${CSS.dest}/assets/css/main.css`]
+            min: `${CSS.dest}/assets/css/main.min.css`,
+            files: [`${CSS.dest}/main.css`]
         },
         {
             name: "JS_HEAD",

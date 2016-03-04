@@ -1,4 +1,4 @@
-// Compiled using typings@0.6.8
+// Compiled using typings@0.6.9
 // Source: https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/5d6c3bdb5d936b257f22961890141a999e19daef/gulp-sourcemaps/gulp-sourcemaps.d.ts
 // Type definitions for gulp-sourcemaps
 // Project: https://github.com/floridoo/gulp-sourcemaps

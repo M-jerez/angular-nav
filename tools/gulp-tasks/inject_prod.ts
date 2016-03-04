@@ -12,9 +12,9 @@ var systemJsAlreadyInjected = false;
 
 class injectTask implements gulpTask {
 
-    name:string = "inject_dev";
+    name:string = "inject_prod";
 
-    newFiles = {};
+
 
     register(gulp:Gulp, plugins) {
         gulp.task(this.name, ()=> {
@@ -31,24 +31,14 @@ class injectTask implements gulpTask {
                 var group = groups[i];
 
                 //stores the result of copy on the files object so copy is not performed on watch task
-                if (typeof this.newFiles[group.name] == "undefined") {
-                    this.newFiles[group.name] = resolveInjectPaths(group);
-                    injectTask.copy(group.files, this.newFiles[group.name]);
-                }
-                var newFiles = this.newFiles[group.name];
-                stream.pipe(plugins.inject(gulp.src(newFiles, {read: false}), {
+                stream.pipe(plugins.inject(gulp.src(group.min, {read: false}), {
                     name: group.injectName,
                     transform: injectTask.addCompilationTime
                 }));
             }
 
-            //inject systemjs module loader
-			var name = path.basename(TS.main ,".ts");
-            var src = gulp.src(path.join(PATH.build,name+".js"), {read: false});
-            //this is just  a hack, we don't want to embed ani link or scrip,
-            // we only want to embed the systemjs loader which is retruned by injectSystemjs()
-            //src needs to be a single file so we don't call the inject function multiple times
-            stream.pipe(plugins.inject(src, {
+            //inject the budled app with systemjs
+            stream.pipe(plugins.inject(gulp.src(TS.min, {read: false}), {
                 name: SYSTEM_JS.injectName,
                 transform: injectTask.injectSystemjs
             }));
@@ -103,14 +93,9 @@ class injectTask implements gulpTask {
 
 
     private static injectSystemjs(filepath) {
-        if(systemJsAlreadyInjected){
-            return "";
-        }else{
-            var systemConfig = JSON.stringify(SYSTEM_JS.config);
-            return "<script>System.config(" +
-                systemConfig +
-                ");System.import('app.js').then(null, console.error.bind(console));</script>";
-        }
+		var rel_root = path.join(".", filepath);
+		var rel_dest = path.relative(INJECT.dest, rel_root);
+		return `<script src="${rel_dest}?${compilationID}"></script>`
     }
 
 }

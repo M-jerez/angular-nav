@@ -17,12 +17,24 @@ gulp.task('default', done=>{
 		'watch'
 	)
 });
-gulp.task("Build", done=> {
+gulp.task("Build-Dev", done=> {
 	runInSequence(
 		'clean',
 		'copy',
 		['css', 'ts_compile'],
 		"inject_dev",
+		done
+	)
+});
+
+gulp.task("Build-Prod", done=> {
+	runInSequence(
+		'clean',
+		'copy',
+		['css', 'ts_compile'],
+		'bundle_injects',
+		'bundle_app',
+		"inject_prod",
 		done
 	)
 });

@@ -1,4 +1,4 @@
-// Compiled using typings@0.6.8
+// Compiled using typings@0.6.9
 // Source: https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/4ead81cc68ab1a2cd824de4394e1bda72b1b9f92/vinyl/vinyl.d.ts
 // Type definitions for vinyl 1.1.0
 // Project: https://github.com/wearefractal/vinyl

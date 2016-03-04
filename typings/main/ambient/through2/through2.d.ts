@@ -1,4 +1,4 @@
-// Compiled using typings@0.6.8
+// Compiled using typings@0.6.9
 // Source: https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/48f20e97bfaf70fc1a9537b38aed98e9749be0ae/through2/through2.d.ts
 // Type definitions for through2 v 2.0.0
 // Project: https://github.com/rvagg/through2
