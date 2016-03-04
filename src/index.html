@@ -35,12 +35,8 @@
 <!-- endinject -->
 
 
-<script>
-	System.config({
-		"defaultJSExtensions": true,
-		"paths": {"main": "/main", "angular2/*": "../node_modules/angular2/*", "rxjs/*": "../node_modules/rxjs/*"}
-	});
-	System.import('app.js').then(null, console.error.bind(console));
-</script>
+
+<!-- inject-app-load:ts -->
+<!-- endinject -->
 </body>
 </html>

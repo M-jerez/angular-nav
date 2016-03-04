@@ -22,7 +22,7 @@ gulp.task("Build", done=> {
 		'clean',
 		'copy',
 		['css', 'ts_compile'],
-		"inject",
+		"inject_dev",
 		done
 	)
 });

@@ -23,7 +23,6 @@ class cssTask implements gulpTask{
 			}
 
 			return x.pipe(plugins.autoprefixer())
-				.pipe(plugins.minifyCss())
 				.pipe(plugins.sourcemaps.write("maps"))
 				.pipe(gulp.dest(CSS.dest));
 		});
